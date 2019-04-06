@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 
 function App() {
   // Like equivalent this.state = {}
-  console.log(useState(false))
+  const [activated, setActivated] = useState(false);
+  const buttonText = activated ? 'active' : 'inactive';
 
+  const onClick = () => setActivated(!activated);
   return(
-    <button>
-      Mt text
+    <button onClick={onClick}>
+      {buttonText}
     </button>
   )
 }

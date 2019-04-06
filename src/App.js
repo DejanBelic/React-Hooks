@@ -1,15 +1,34 @@
-import React, { useState } from 'react';
+import React, {Component, useState} from 'react';
+
+// class App extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       count: 0
+//     }
+//   }
+//   handleClick = () => {
+//     this.setState({ count: this.state.count + 1})
+//   }
+//   render() {
+//     return (
+//       <div>
+//           <h1>{this.state.count}</h1>
+//         <button onClick={this.handleClick}>Increase</button>
+//       </div>
+//     );
+//   }
+// }
 
 function App() {
-  // Like equivalent this.state = {}
-  const [activated, setActivated] = useState(false);
-  const buttonText = activated ? 'active' : 'inactive';
+  const [count, setCount] = useState(0);
 
-  const onClick = () => setActivated(!activated);
-  return(
-    <button onClick={onClick}>
-      {buttonText}
-    </button>
+  const onClick = () => setCount(count + 1);
+  return (
+    <div>
+      <h1>{count}</h1>
+      <button onClick={onClick}>Increase</button>
+    </div>
   )
 }
 

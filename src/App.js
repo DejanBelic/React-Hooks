@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {useState } from 'react';
 
 // class App extends Component {
 //   constructor(props) {
@@ -23,11 +23,15 @@ import React, {Component, useState} from 'react';
 function App() {
   const [count, setCount] = useState(0);
 
-  const onClick = () => setCount(count + 1);
+  const handleIncrease = () => setCount(count + 1);
+  const handleDecrease = () => setCount(count - 1);
+  const resetValues = () => setCount(0);
   return (
     <div>
       <h1>{count}</h1>
-      <button onClick={onClick}>Increase</button>
+      <button onClick={handleIncrease}>Increase</button>
+      <button onClick={handleDecrease}>Decrease</button>
+      <button onClick={resetValues}>Reset</button>
     </div>
   )
 }

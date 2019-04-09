@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 
-
-function App() {
+function Counter() {
   const [count, setCount] = useState(0);
   const handleIncreaseCount = () => setCount(count + 1);
   const handleDecreaseCount = () => setCount(count - 1);
@@ -23,6 +22,14 @@ function App() {
       <h1>count</h1>
     </div>
   )
+}
+
+function App() {
+  const [visible, setVisible] = useState(false);
+  return(<div>
+    <button onClick={() => setVisible(!visible)}>Show / Hide the Counter Component</button>
+    { visible &&  <Counter/>}
+  </div>)
 }
 
 export default App;

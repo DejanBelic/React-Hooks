@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 function Counter() {
   const [count, setCount] = useState(0);
+  const [color, setColor] = useState('salmon');
   const handleIncreaseCount = () => setCount(count + 1);
   const handleDecreaseCount = () => setCount(count - 1);
 
@@ -13,13 +14,19 @@ function Counter() {
     return () => {
       console.log(`Queed to clean up above work after its executed. ${count}`)
     }
-  });
+  }, [count]);
+
+  const handleColorChange = () =>  {
+    const nextColor = color === 'salmon' ? 'gold' : 'salmon';
+    setColor(nextColor);
+  };
 
   return (
     <div>
       <button onClick={handleIncreaseCount}>Increase</button>
+      <button onClick={handleColorChange}>Color change</button>
       <button onClick={handleDecreaseCount}>Decrease</button>
-      <h1>count</h1>
+      <h1 style={{ color }}>count</h1>
     </div>
   )
 }

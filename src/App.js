@@ -1,46 +1,42 @@
 import React, {useState} from 'react';
 
-function useCounter(startingValue) {
-  const [count, setCount] = useState(startingValue);
-  const increment = () =>  setCount(count + 1);
-  const decrement = () => setCount(count - 1);
+function useInput() {
+  const [value, setValue] = useState('');
+
+  const onChange = event => {
+    setValue(event.target.value);
+  }
 
   return {
-    increment,
-    decrement,
-    count
+    value,
+    onChange
   }
 }
 
-function Display(props) {
-  const {count, increment, decrement} = useCounter(props.start);
+function App() {
+
+
 
   return (
-    <div>
-      <button onClick={increment}>Incrase</button>
-      <button onClick={decrement}>Decrease</button>
-      <h1>{count}</h1>
-    </div>)
-}
+    <form>
+      <input
+        type="text"
+        placeholder="Name"
+        {...useInput()}
+      />
 
-function FancyDisplay(props) {
-  const {count, increment, decrement} = useCounter(props.start);
+      <input
+        type="text"
+        placeholder="Surname"
+        {...useInput()}
+      />
 
-  return (
-    <div>
-      <button onClick={increment}>Incrase</button>
-      <button onClick={decrement}>Decrease</button>
-      <h2>{count}</h2>
-    </div>)
-}
-
-const App = () => {
-  return(
-    <div>
-      <Display start={10}/>
-      <Display start={50}/>
-      <FancyDisplay start={60}/>
-    </div>
+      <input
+        type="text"
+        placeholder="Age"
+        {...useInput()}
+      />
+    </form>
   )
 };
 
